@@ -36,14 +36,10 @@ export default class Puzzle extends Component {
           };
           self.props.appStore.addRect(pos, i);
           const style = {
-            position: 'absolute',
             backgroundImage: `url(${dataURL})`,
-            backgorundRepeat: 'no-repeat',
             backgroundPosition: `-${elWidth * (i % puzzleCount) / puzzleCount}px -${elHeight * Math.floor(i / puzzleCount) / puzzleCount}px`,
-            float: 'left',
             width: elWidth / puzzleCount,
             height: elHeight / puzzleCount,
-            cursor: 'pointer',
             ...pos
           };
           return <PuzzleRect backgroundStyle={style} key={i} rectModel={self.props.appStore.rectArray[i]} />;
@@ -68,9 +64,7 @@ class PuzzleRect extends Component {
   disX;
   disY;
   handleEnd = () => {
-    const target = this.props.rectModel.rectPos;
     this.props.rectModel.store.findNearest(
-      Math.abs(target.top + target.left),
       this.props.rectModel.rectIndex
     );
   }
@@ -102,6 +96,7 @@ class PuzzleRect extends Component {
         // onMouseMove={this.handleMove}
         // onMouseUp={this.handleEnd}
         style={style}
+        className={styles.rect}
       >
       </div>
     );

@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --config=./webpack.config.js"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "materialize-css": "^0.100.2",
     "mobx": "^3.4.1",
     "mobx-react": "^4.3.5",

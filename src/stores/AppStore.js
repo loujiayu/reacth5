@@ -6,11 +6,12 @@ export default class AppStore {
   @action addRect(pos, i) {
     this.rectArray.push(new RectModel(this, pos, i));
   }
-  findNearest(len, i) {
-    let distance = Math.abs(this.rectArray[i].getLength - len);
+  findNearest(i) {
+    const sourceRect = this.rectArray[i];
+    let distance = this.getDistance(sourceRect.initalPos, sourceRect.rectPos);
     let index = i;
     this.rectArray.forEach((r, rectIndex) => {
-      const d = Math.abs(r.getLength - len);
+      const d = this.getDistance(sourceRect.rectPos, r.initalPos);
       if (d < distance) {
         distance = d;
         index = rectIndex;
@@ -21,6 +22,9 @@ export default class AppStore {
     } else {
       this.rectArray[i].reset();
     }
+  }
+  @action getDistance(s1, s2) {
+    return Math.abs(s1.top - s2.top) + Math.abs(s1.left - s2.left);
   }
 
   @action exchange(source, target) {
@@ -41,7 +45,6 @@ class RectModel {
     this.rectPos = pos;
     this.initalPos = pos;
     this.rectIndex = i;
-    console.log(pos);
   }
   @action changePos(pos) {
     this.rectPos = pos;

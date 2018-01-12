@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'mobx-react';
-import App from './index';
-import './app.css';
+import App from './app';
+import './global.css';
 import stores from './stores';
 
 const rootElement = document.getElementById('root');

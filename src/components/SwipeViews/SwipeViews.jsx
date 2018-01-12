@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import classnames from 'classnames';
 import styles from './SwipeViews.less';
 
 export default class SwipeViews extends Component {
@@ -13,13 +13,14 @@ export default class SwipeViews extends Component {
   }
 
   renderChild = (child, index) => {
-    const {sliderIndex} = this.props;
-    const colors = ['red', 'blue','black'];
+    const {slideIndex} = this.props;
+    const {style, className, ...other} = child.props;
     return React.cloneElement(child, Object.assign({
-      className: styles.slide,
+      className: classnames(styles.slide, className),
       style: {
-        transform: `translateY(${(sliderIndex - index) * 100}%)`,
+        transform: `translateY(${(index - slideIndex) * 100}%)`,
+        ...style
       }
-    }, child.props));
+    }, other));
   }
 }
