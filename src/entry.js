@@ -28,7 +28,7 @@ ReactDOM.render(
 // in case of problems with react-router, check this issue:
 // https://github.com/gaearon/react-hot-loader/issues/249
 if (module.hot) {
-  module.hot.accept('./index', () => {
+  module.hot.accept('./app', () => {
     ReactDOM.render(
       <AppContainer>
         <Provider {...context}>

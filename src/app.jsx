@@ -17,14 +17,24 @@ export default class App extends Component {
     if (this.state.slideIndex === 2) return;
     this.setState({slideIndex: this.state.slideIndex + 1});
   }
+  handleShuffle = () => {
+    const { rectArray } = this.props.appStore;
+    const len = rectArray.length;
+    for (let i = 0; i < 100; i++) {
+      this.props.appStore.exchange(rectArray[i], rectArray[Math.floor(Math.random() * len)]);
+    }
+  }
+  handleTouchStart = () => {
+
+  }
   render() {
     return (
       <div className={styles.swipeWrapper} >
-        <button onClick={() => this.setState({slideIndex: this.state.slideIndex + 1})} className={styles.button1} >Next</button>
-        <button onClick={() => this.setState({slideIndex: this.state.slideIndex - 1})} className={styles.button2} >Prev</button>
+        <button>casdcasfa</button>
         <SwipeViews slideIndex={this.state.slideIndex}>
-          <div >
-            <Puzzle puzzleCount={2} />
+          <div onTouchStart={this.handleTouchStart} >
+            <button style={{marginLeft: 200}} onClick={this.handleShuffle}>shuffle</button>
+            <Puzzle puzzleCount={3} />
           </div>
           <div>
             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate fuga odio nulla architecto. Tenetur, laboriosam dolorum delectus, amet illo veniam exercitationem alias nostrum quidem reprehenderit ducimus saepe, iusto voluptatibus autem.</div>

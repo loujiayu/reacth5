@@ -55,4 +55,7 @@ class RectModel {
   @computed get getLength() {
     return Math.abs(this.initalPos.top + this.initalPos.left);
   }
+  @computed get isCorrect() {
+    return this.rectIndex === this.store.rectArray.indexOf(this);
+  }
 }

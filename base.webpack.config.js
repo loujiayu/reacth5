@@ -8,19 +8,21 @@ const VENDOR_LIBS = [
   'react',
   'react-dom',
   'mobx',
-  'mobx-react'
+  'mobx-react',
 ];
+
+const projPath = path.resolve(__dirname);
 
 module.exports = {
   entry: {
     bundle: './src/entry.js',
     vendor: VENDOR_LIBS,
     vendorStyles: [
-      path.resolve(__dirname, 'node_modules/materialize-css/dist/css/materialize.min.css')
+      path.resolve(projPath, 'node_modules/materialize-css/dist/css/materialize.min.css')
     ]
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(projPath, 'dist'),
     filename: '[name].[chunkhash].js'
   },
   resolve: {
@@ -104,9 +106,6 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    }),
-    new ExtractTextPlugin({
-      disable: true
-    }),
+    })
   ]
 };
