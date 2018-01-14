@@ -98,9 +98,6 @@ class PuzzleRect extends Component {
         onTouchStart={this.handleStart}
         onTouchEnd={this.handleEnd}
         onTouchMove={this.handleMove}
-        // onMouseDown={this.handleStart}
-        // onMouseMove={this.handleMove}
-        // onMouseUp={this.handleEnd}
         style={style}
         className={styles.rect}
       >
